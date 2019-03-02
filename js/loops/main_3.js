@@ -14,6 +14,7 @@ renderer.setSize(window.innerWidth,window.innerHeight);
 renderer.setClearColor(new THREE.Color(0x000F4E),1.0);
 
 const canvas = renderer.domElement;
+const heading = "Broken";
 
 //postprocessing setup
 var params = {
@@ -110,4 +111,4 @@ composer.render();
 
 }
 
-export  {canvas,Render};
+export  {canvas,Render,heading};
