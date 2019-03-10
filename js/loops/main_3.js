@@ -111,4 +111,6 @@ composer.render();
 
 }
 
-export  {canvas,Render,heading};
+var isVR = true;
+export  {canvas,Render,heading,renderer,isVR};
+//export  {canvas,Render,heading};

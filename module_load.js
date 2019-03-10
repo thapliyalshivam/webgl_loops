@@ -5,7 +5,7 @@ async function loadModule() {
   document.body.appendChild(module.canvas);
   document.body.style.margin="0px";
 
-  document.body.appendChild( WEBVR.createButton( module.renderer ) );
+
   if (module.heading!=undefined)
   {
     let head  = document.createElement("h4");
@@ -20,7 +20,6 @@ async function loadModule() {
     head.style["border-radius"] = "6px";
     head.style["font-family"]= "arial";
 
-
     document.body.appendChild(head);
   }
   //
@@ -33,7 +32,14 @@ async function loadModule() {
   // }
 
     function update() {
-        module.renderer.setAnimationLoop(module.Render);
+      // console.log(module);
+      if(module.isVR!=undefined&&module.isVR){
+        document.body.appendChild( WEBVR.createButton( module.renderer ) );
+        module.renderer.setAnimationLoop(module.Render);}
+      else{
+        requestAnimationFrame(update);
+        module.Render();
+          }
     }
 
     update();
