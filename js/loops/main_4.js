@@ -6,9 +6,9 @@ var scene = new THREE.Scene();
 var camera = new  THREE.PerspectiveCamera(75,
   window.innerWidth/window.innerHeight,
   0.1,
-  10);
-camera.position.z = -6;
-const isVR = !true;
+  100);
+camera.position.z = 0;
+const isVR = true;
 
 var renderer = new THREE.WebGLRenderer();
 renderer.setPixelRatio( window.devicePixelRatio);
@@ -31,15 +31,6 @@ var params = {
   bloomThreshold: 0,
   bloomRadius: 0.72
 };
-
-
-
-
-
-
-
-
-
 
 
 				var light = new THREE.HemisphereLight( 0xffffff, 0x444444 );
@@ -99,7 +90,7 @@ var holder = new THREE.Group();
 
 const halos = 40;
 
-var geometry = new THREE.SphereBufferGeometry(5,32,32);
+var geometry = new THREE.SphereBufferGeometry(2,32,32);
     var material = new THREE.MeshBasicMaterial( { color: new THREE.Color("white"),  transparent:true, opacity:1, side: THREE.DoubleSide } );
     var obj = new THREE.Mesh( geometry, material );
     obj.position.set( 0, 0, 0 );
@@ -107,23 +98,26 @@ var geometry = new THREE.SphereBufferGeometry(5,32,32);
     obj.castShadow = true;
   //  scene.add(obj);
 
-const dub = obj.clone();
 
-holder.add(dub);
 
-const dis = 500;
+const dis = 100;
 const step = (2*Math.PI)/halos;
 
 for (let i=0;i<=halos;++i){
+
   const dub1 = obj.clone();
   dub1.position.set(
-    Math.cos(step*i)*dis/i,
-    Math.sin(step*i)*dis/i,
-    i
+    Math.random()*100,
+    Math.random()*100,
+		Math.random()*100
   );
   holder.add(dub1);
 }
 scene.add(holder);
+
+
+
+
 
 
 function Render(){
@@ -133,7 +127,7 @@ holder.children.forEach((c,i)=>{
   c.position.set(
     Math.cos(step*i)*(dis*(Math.sin(t*3+i*7*Math.PI/halos))),
     Math.sin(step*i)*(dis*(Math.sin(t*3+i*7*Math.PI/halos))),
-    0
+    Math.cos(step*i)*(dis*(Math.sin(t*3+i*7*Math.PI/halos))),
   );
 
 });
