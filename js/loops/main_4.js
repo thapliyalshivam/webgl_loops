@@ -1,19 +1,20 @@
 
 //scene setup
 var scene = new THREE.Scene();
+	scene.background = new THREE.Color( 0x505050 );
 //scene.fog = new THREE.Fog(0x0000ff, 0,300);
 var camera = new  THREE.PerspectiveCamera(75,
   window.innerWidth/window.innerHeight,
   0.1,
   10);
-//camera.position.z = 1000;
+camera.position.z = -6;
 
 var renderer = new THREE.WebGLRenderer();
 renderer.setPixelRatio( window.devicePixelRatio);
 renderer.vr.enabled = true;
 renderer.toneMapping = THREE.ReinhardToneMapping;
 renderer.setSize(window.innerWidth,window.innerHeight);
-renderer.setClearColor(new THREE.Color(0x000F4E),1.0);
+//renderer.setClearColor(new THREE.Color(0x000F4E),1.0);
 
 
 
@@ -29,6 +30,36 @@ var params = {
   bloomThreshold: 0,
   bloomRadius: 0.72
 };
+
+
+
+
+
+
+
+
+
+
+
+				var light = new THREE.HemisphereLight( 0xffffff, 0x444444 );
+				light.position.set( 1, 1, 1 );
+				scene.add( light );
+				var geometry = new THREE.IcosahedronBufferGeometry( 23, 2 );
+				for ( var i = 0; i < 200; i ++ ) {
+					var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
+					object.position.x = Math.random() * 4 - 2;
+					object.position.y = Math.random() * 4;
+					object.position.z = Math.random() * 4 - 2;
+					object.userData.velocity = new THREE.Vector3();
+					object.userData.velocity.x = Math.random() * 0.01 - 0.005;
+					object.userData.velocity.y = Math.random() * 0.01 - 0.005;
+					object.userData.velocity.z = Math.random() * 0.01 - 0.005;
+					scene.add( object );
+				}
+
+
+
+
 
 
 var renderScene = new THREE.RenderPass( scene, camera );
@@ -86,7 +117,7 @@ for (let i=0;i<=halos;++i){
   dub1.position.set(
     Math.cos(step*i)*dis/i,
     Math.sin(step*i)*dis/i,
-    0
+    i
   );
   holder.add(dub1);
 }
