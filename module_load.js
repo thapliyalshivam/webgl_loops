@@ -4,6 +4,8 @@ async function loadModule() {
   import (`./js/loops/main_${num}.js`);
   document.body.appendChild(module.canvas);
   document.body.style.margin="0px";
+
+  document.body.appendChild( WEBVR.createButton( module.renderer ) );
   if (module.heading!=undefined)
   {
     let head  = document.createElement("h4");
@@ -21,10 +23,17 @@ async function loadModule() {
 
     document.body.appendChild(head);
   }
+  //
+  // if (module.isVR!=undefined&& isVR==true)
+  // {
+  //   let script  = document.createElement("script");
+  //   script.src = "js/lib/WebVR.js";
+  //
+  //       document.body.appendChild(script);
+  // }
 
     function update() {
-      requestAnimationFrame(update);
-      module.Render();
+        module.renderer.setAnimationLoop(module.Render);
     }
 
     update();
