@@ -72,7 +72,7 @@ console.log(obj);
    
 
 var loader = new THREE.OBJLoader();
-loader.load( '../../../models/yo.obj', function ( object ) {
+loader.load( './././models/yo.obj', function ( object ) {
 
 
   object.traverse( function ( child ) {
