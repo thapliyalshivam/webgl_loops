@@ -87,7 +87,6 @@ scene.add( spotLight );
 
 //add geometries below
 var holder = new THREE.Group();
-
 const halos = 40;
 
 var geometry = new THREE.SphereBufferGeometry(2,32,32);
