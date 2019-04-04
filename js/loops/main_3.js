@@ -6,7 +6,7 @@ var camera = new  THREE.PerspectiveCamera(75,
   window.innerWidth/window.innerHeight,
   0.1,
   2000);
-camera.position.z = 10;
+camera.position.z = 2;
 
 var renderer = new THREE.WebGLRenderer();
 renderer.toneMapping = THREE.ReinhardToneMapping;
@@ -84,7 +84,7 @@ loader.load( '../../../models/yo.obj', function ( object ) {
   } );
 
   object.rotation.set(Math.PI/2,Math.PI/2,Math.PI/2);
-object.scale.set(3,3,3);
+//dobject.scale.set(3,3,3);
  mm=object;
   scene.add( object );
 } );
