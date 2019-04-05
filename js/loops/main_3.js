@@ -47,7 +47,7 @@ var holder = new THREE.Group();
 
 const halos = 40;
 var mm;
-let imgTexture = new THREE.TextureLoader().load( "../../../images/hm.jpg" );
+let imgTexture = new THREE.TextureLoader().load( "./././images/hm.jpg" );
 
 var material = new THREE.MeshStandardMaterial( {
   map: imgTexture,
