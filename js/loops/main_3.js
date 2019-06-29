@@ -69,14 +69,14 @@ var geometry = new THREE.SphereBufferGeometry(90,32,32);
     obj.receiveShadow = true;
   // scene.add(obj);
 console.log(obj);
-   
+
 
 var loader = new THREE.OBJLoader();
 loader.load( './././models/yo.obj', function ( object ) {
 
 
   object.traverse( function ( child ) {
-    if ( child instanceof THREE.Mesh  ) 
+    if ( child instanceof THREE.Mesh  )
     {
 
   console.log(child);
