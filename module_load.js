@@ -75,8 +75,8 @@ async function refresh(){
 
 }
 
-window.addEventListener("click",e=>{
-refresh();
+module.canvas.addEventListener("click",e=>{
+window.location.reload();
 });
  window.addEventListener("hashchange",e=>{refresh();});
 }

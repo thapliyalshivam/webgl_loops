@@ -3,7 +3,7 @@
 var scene = new THREE.Scene();
 
 				scene = new THREE.Scene();
-				scene.background = new THREE.Color( 0x505050 );
+				scene.background = new THREE.Color( 0xDDDDDD );
 			let	camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.1, 1000 );
 				scene.add( camera );
 
@@ -23,7 +23,7 @@ const canvas = renderer.domElement;
 const heading = "Broken";
 var holder = new THREE.Group();
 
-				scene.add( new THREE.HemisphereLight( 0x606060, 0x404040 ) );
+				scene.add( new THREE.HemisphereLight( 0xFFFFFF, 0x4040FF ) );
 								var geometry = new THREE.BoxBufferGeometry( 0.15, 0.15, 0.15 );
 								for ( var i = 0; i < 200; i ++ ) {
 									var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
