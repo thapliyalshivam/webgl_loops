@@ -120,13 +120,13 @@ scene.add(holder);
 
 
 function Render(){
-const t=Date.now()/1000;
+const t=Date.now()/10000;
 
 holder.children.forEach((c,i)=>{
   c.position.set(
     Math.cos(step*i)*(dis*(Math.sin(t*3+i*7*Math.PI/halos))),
     Math.sin(step*i)*(dis*(Math.sin(t*3+i*7*Math.PI/halos))),
-    Math.cos(step*i)*(dis*(Math.sin(t*3+i*7*Math.PI/halos))),
+    Math.cos(step*i)*(dis*(Math.sin(t*3+i*7*Math.PI/halos)))+100,
   );
 
 });
