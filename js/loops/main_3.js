@@ -11,7 +11,7 @@ camera.position.z = 2;
 var renderer = new THREE.WebGLRenderer();
 renderer.toneMapping = THREE.ReinhardToneMapping;
 renderer.setSize(window.innerWidth,window.innerHeight);
-renderer.setClearColor(new THREE.Color(0xa0fbff),1.0);
+renderer.setClearColor(new THREE.Color(0x0000ff),1.0);
 
 const canvas = renderer.domElement;
 const heading = "Broken";
@@ -27,32 +27,34 @@ var params = {
 };
 
 
-//rendering composer
-renderer.gammaInput = true;
-renderer.gammaOutput = true;
-renderer.toneMappingExposure = Math.pow( params.exposure, 4.0 );
+// //rendering composer
+// renderer.gammaInput = true;
+// renderer.gammaOutput = true;
+// renderer.toneMappingExposure = Math.pow( params.exposure, 1.0 );
 
 
-scene.add( new THREE.AmbientLight( 0xeeeeee ) );
-var directionalLight = new THREE.DirectionalLight( 0xddffff, 2 );
+ scene.add( new THREE.AmbientLight( 0xeeeeee ) );
+var directionalLight = new THREE.DirectionalLight( 0xffffff, 3);
+
 directionalLight.position.set( 1, 1, 1 ).normalize();
 scene.add( directionalLight );
-var pointLight = new THREE.PointLight( 0xffffff, 2, 800 );
-scene.add( pointLight );
 
-scene.add( new THREE.HemisphereLight( 0x443333, 0x222233, 4 ) );
+// var pointLight = new THREE.PointLight( 0xffffff, 2, 800 );
+// scene.add( pointLight );
+
+// scene.add( new THREE.HemisphereLight( 0x443333, 0x222233, 4 ) );
 
 //add geometries below
 var holder = new THREE.Group();
 
 const halos = 40;
 var mm;
-let imgTexture = new THREE.TextureLoader().load( "./././images/hm.jpg" );
+let imgTexture = new THREE.TextureLoader().load( "./././images/cab.png" );
 
 var material = new THREE.MeshStandardMaterial( {
   map: imgTexture,
-  bumpMap: imgTexture,
-  bumpScale: 4,
+//   bumpMap: imgTexture,
+//   bumpScale: 4,
   //color: new THREE.Color(0xff0000),
   metalness: 0.2,
   roughness: 0.6,
