@@ -2,14 +2,13 @@
 //scene setup
 var scene = new THREE.Scene();
 //scene.fog = new THREE.Fog(0x0000ff, 0,300);
-var camera = new  THREE.PerspectiveCamera(75,
+var camera = new  THREE.PerspectiveCamera(15,
   window.innerWidth/window.innerHeight,
   0.1,
   2000);
-camera.position.z = 2;
+camera.position.z = 12;
 
 var renderer = new THREE.WebGLRenderer();
-renderer.toneMapping = THREE.ReinhardToneMapping;
 renderer.setSize(window.innerWidth,window.innerHeight);
 renderer.setClearColor(new THREE.Color(0x0000ff),1.0);
 
@@ -36,12 +35,21 @@ var params = {
  scene.add( new THREE.AmbientLight( 0xeeeeee ) );
 var directionalLight = new THREE.DirectionalLight( 0xffffff, 3);
 
-directionalLight.position.set( 1, 1, 1 ).normalize();
-scene.add( directionalLight );
 
-// var pointLight = new THREE.PointLight( 0xffffff, 2, 800 );
-// scene.add( pointLight );
 
+var directionalLight = new THREE.DirectionalLight(0xffffff, .5);
+directionalLight.position.set(-2, 2, 2);
+directionalLight.castShadow = true;
+directionalLight.shadow.camera.near = -1;
+directionalLight.shadow.camera.far = 10;
+scene.add(directionalLight);
+
+var directionalLight2 = new THREE.DirectionalLight(0xffffff, .5);
+directionalLight2.position.set(1, 2, 1);
+directionalLight2.castShadow = true;
+directionalLight2.shadow.camera.near = -4;
+directionalLight2.shadow.camera.far = 10;
+scene.add(directionalLight2);
 // scene.add( new THREE.HemisphereLight( 0x443333, 0x222233, 4 ) );
 
 //add geometries below
@@ -52,13 +60,13 @@ var mm;
 let imgTexture = new THREE.TextureLoader().load( "./././images/cab.png" );
 
 var material = new THREE.MeshStandardMaterial( {
-  map: imgTexture,
+map: imgTexture,
 //   bumpMap: imgTexture,
 //   bumpScale: 4,
-  //color: new THREE.Color(0xff0000),
-  metalness: 0.2,
-  roughness: 0.6,
-  envMap: imgTexture
+//   color: new THREE.Color(0xff0000),
+  metalness: 0.61,
+  roughness: 0.5,
+  //envMap: imgTexture
 
 } );
 
@@ -70,8 +78,8 @@ var geometry = new THREE.SphereBufferGeometry(90,32,32);
     obj.position.set( 0, 0, 0 );
     obj.receiveShadow = true;
   // scene.add(obj);
-console.log(obj);
-
+  
+//console.log(obj);
 
 var loader = new THREE.OBJLoader();
 loader.load( './././models/yo.obj', function ( object ) {
@@ -86,10 +94,16 @@ loader.load( './././models/yo.obj', function ( object ) {
   } );
 
   object.rotation.set(Math.PI/2,Math.PI/2,Math.PI/2);
-//dobject.scale.set(3,3,3);
- mm=object;
+
+  mm=object;
+  var ps = mm.clone();
+  ps.position.set(2,0,1);
+  scene.add(ps);
   scene.add( object );
 } );
+
+
+
 
 // const objLoader = new THREE.OBJLoader2();
 // objLoader.load('../../../models/horse.obj', (event) => {
