@@ -138,7 +138,7 @@ var WEBVR = {
 
 			stylizeElement( button );
 
-			navigator.xr.requestSession().then( function ( device ) {
+			navigator.xr.requestDevice().then( function ( device ) {
 
 				device.supportsSession( { immersive: true, exclusive: true /* DEPRECATED */ } )
 					.then( function () { showEnterXR( device ); } )

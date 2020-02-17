@@ -20,7 +20,7 @@ renderer.setSize(window.innerWidth,window.innerHeight);
 
 
 const canvas = renderer.domElement;
-const heading = null ;
+const heading = "Broken";
 var holder = new THREE.Group();
 
 				scene.add( new THREE.HemisphereLight( 0xFFFFFF, 0x4040FF ) );
@@ -55,7 +55,7 @@ scene.add( holder );
 
 function Render(){
 	let t=Date.now()/10000;
-		holder.rotation.x = Math.sin(t)*Math.PI;
+		holder.rotation.x = t*Math.PI;
 
 	if(isVR)
 	renderer.render(scene, camera);
