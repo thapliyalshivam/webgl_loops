@@ -89,7 +89,7 @@ function InOutQuint(t) {
 
 
 var objs = [];
-var NUM = 20;
+var NUM = 13;
 function init() {
   for (let j = 0; j < NUM; ++j) {
     let dub = gun.clone();
@@ -114,8 +114,8 @@ function Render() {
       0
     );
     gun.rotation.set(
-      (time*Math.PI*2) + id*(1011.7),
-      (time*Math.PI*2) + id*(1110.7),
+      (time*Math.PI*2) + id*(1.7),
+      (time*Math.PI*2) + id*(1.7),
       0
     );
    gun.scale.setScalar(0.7+InOutQuint(Math.sin((time1*Math.PI/loopDuration))))/2;
