@@ -2,18 +2,19 @@
 //scene setup
 var scene = new THREE.Scene();
 //scene.fog = new THREE.Fog(0x0000ff, 0,300);
-var camera = new  THREE.PerspectiveCamera(15,
-  window.innerWidth/window.innerHeight,
+var camera = new THREE.PerspectiveCamera(15,
+  window.innerWidth / window.innerHeight,
   0.1,
   2000);
 camera.position.z = 12;
 
 var renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth,window.innerHeight);
-renderer.setClearColor(new THREE.Color(0x0000ff),1.0);
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setClearColor(new THREE.Color(0x0000ff), 1.0);
 
 const canvas = renderer.domElement;
-const heading = "Broken";
+const heading = "Gun Flower";
+const isVR = !false;
 
 //postprocessing setup
 var params = {
@@ -32,8 +33,8 @@ var params = {
 // renderer.toneMappingExposure = Math.pow( params.exposure, 1.0 );
 
 
- scene.add( new THREE.AmbientLight( 0xeeeeee ) );
-var directionalLight = new THREE.DirectionalLight( 0xffffff, 3);
+scene.add(new THREE.AmbientLight(0xeeeeee));
+var directionalLight = new THREE.DirectionalLight(0xffffff, 3);
 
 
 
@@ -56,74 +57,80 @@ scene.add(directionalLight2);
 var holder = new THREE.Group();
 
 const halos = 40;
-var mm;
-let imgTexture = new THREE.TextureLoader().load( "./././images/cab.png" );
-
-var material = new THREE.MeshStandardMaterial( {
-map: imgTexture,
-//   bumpMap: imgTexture,
-//   bumpScale: 4,
-//   color: new THREE.Color(0xff0000),
+var gun;
+var material = new THREE.MeshStandardMaterial({
+  map: new THREE.TextureLoader().load("./././images/cab.png"),
   metalness: 0.61,
   roughness: 0.5,
-  //envMap: imgTexture
-
-} );
+});
 
 
-//material.map.wrapS = THREE.RepeatWrapping;
-
-var geometry = new THREE.SphereBufferGeometry(90,32,32);
-    var obj = new THREE.Mesh( geometry, material );
-    obj.position.set( 0, 0, 0 );
-    obj.receiveShadow = true;
-  // scene.add(obj);
-  
-//console.log(obj);
 
 var loader = new THREE.OBJLoader();
-loader.load( './././models/yo.obj', function ( object ) {
+loader.load('./././models/yo.obj', function (object) {
 
 
-  object.traverse( function ( child ) {
-    if ( child instanceof THREE.Mesh  )
-    {
+  object.traverse(function (child) {
+    if (child instanceof THREE.Mesh) {
+      child.material = material;
+    }
+  });
 
-  console.log(child);
-      child.material =material;}
-  } );
 
-  object.rotation.set(Math.PI/2,Math.PI/2,Math.PI/2);
-
-  mm=object;
-  var ps = mm.clone();
-  ps.position.set(2,0,1);
-  scene.add(ps);
-  scene.add( object );
-} );
+  gun = object;
+  init();
+});
 
 
 
 
-// const objLoader = new THREE.OBJLoader2();
-// objLoader.load('../../../models/horse.obj', (event) => {
-//   const root = event.detail.loaderRootNode;
 
-//   scene.add(root);
-// });
-
-
-function Render(){
-const t=Date.now()/1000;
-
-if(mm)
-mm.rotation.set(Math.sin(t)*Math.PI,Math.sin(t)*Math.PI,Math.sin(t)*Math.PI);
-renderer.render(scene, camera);
-
-
-
+var objs = [];
+var NUM = 20;
+function init() {
+  for (let j = 0; j < NUM; ++j) {
+    let dub = gun.clone();
+    objs.push(dub);
+    scene.add(dub);
+  }
 }
 
-var isVR = !false;
-export  {canvas,Render,heading,renderer,isVR};
+const loopDuration = 21;
+var startTime = performance.now();
+const radius = 1;
+function Render() {
+
+  const time = ( .0001 * (performance.now()-startTime)) % loopDuration;
+
+  const t = Date.now() / 1000;
+  objs.forEach((gun, id) => {
+
+    gun.position.set(
+      Math.cos(id * 2 *Math.PI/NUM)*radius,
+      Math.sin(id * 2 *Math.PI/NUM)*radius,
+      0
+    )
+    gun.rotation.set(
+      (time*Math.PI*2) + id*(0.7),
+      (time*Math.PI*2) + id*(0.7),
+
+    
+      0
+    )
+
+
+
+  })
+
+  if (gun) {
+    gun.rotation.set(Math.sin(t) * Math.PI, Math.sin(t) * Math.PI, Math.sin(t) * Math.PI);
+  }
+
+
+
+
+  renderer.render(scene, camera);
+}
+
+export { canvas, Render, heading, renderer, isVR };
 //export  {canvas,Render,heading};
