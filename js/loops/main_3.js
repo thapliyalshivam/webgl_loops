@@ -82,7 +82,10 @@ loader.load('./././models/yo.obj', function (object) {
 });
 
 
-
+function InOutQuint(t) {
+  if ((t *= 2) < 1) return 0.5 * t * t * t * t * t;
+  return 0.5 * ((t -= 2) * t * t * t * t + 2);
+}
 
 
 var objs = [];
@@ -95,12 +98,13 @@ function init() {
   }
 }
 
-const loopDuration = 21;
+const loopDuration = 3;
 var startTime = performance.now();
 const radius = 1;
 function Render() {
 
   const time = ( .0001 * (performance.now()-startTime)) % loopDuration;
+  const time1 = ( .001 * (performance.now()-startTime)) % loopDuration;
 
   objs.forEach((gun, id) => {
 
@@ -110,16 +114,13 @@ function Render() {
       0
     );
     gun.rotation.set(
-      (time*Math.PI*2) + id*(0.7),
-      (time*Math.PI*2) + id*(0.7),
+      (time*Math.PI*2) + id*(1011.7),
+      (time*Math.PI*2) + id*(1110.7),
       0
     );
-
-    gun.scale.setScalar(1 + 0.2*Math.sin(10*time*Math.PI*2 + id * 200));
-
-
-
-
+   gun.scale.setScalar(0.5+InOutQuint(time1/loopDuration)*2);
+    // console.log();
+    // gun.scale.setScalar(1 + 0.2*Math.sin(10*time*Math.PI*2 + id * 200));
   })
 
 
