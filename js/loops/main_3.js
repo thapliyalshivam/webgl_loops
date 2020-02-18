@@ -119,7 +119,7 @@ function Render() {
       0
     );
    gun.scale.setScalar(0.7+InOutQuint(Math.sin((time1*Math.PI/loopDuration))))/2;
-    console.log(InOutQuint(Math.sin((time1/loopDuration))));
+    // console.log(InOutQuint(Math.sin((time1/loopDuration))));
     // gun.scale.setScalar(1 + 0.2*Math.sin(10*time*Math.PI*2 + id * 200));
   })
 
