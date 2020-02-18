@@ -102,29 +102,26 @@ function Render() {
 
   const time = ( .0001 * (performance.now()-startTime)) % loopDuration;
 
-  const t = Date.now() / 1000;
   objs.forEach((gun, id) => {
 
     gun.position.set(
       Math.cos(id * 2 *Math.PI/NUM)*radius,
       Math.sin(id * 2 *Math.PI/NUM)*radius,
       0
-    )
+    );
     gun.rotation.set(
       (time*Math.PI*2) + id*(0.7),
       (time*Math.PI*2) + id*(0.7),
-
-    
       0
-    )
+    );
+
+    gun.scale.setScalar(1 + 0.2*Math.sin(10*time*Math.PI*2 + id * 200));
+
 
 
 
   })
 
-  if (gun) {
-    gun.rotation.set(Math.sin(t) * Math.PI, Math.sin(t) * Math.PI, Math.sin(t) * Math.PI);
-  }
 
 
 
