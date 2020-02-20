@@ -98,15 +98,17 @@ function init() {
   }
 }
 
-const loopDuration = 3;
+const loopDuration = 41;
 var startTime = performance.now();
 const radius = 1;
+const turn = (Math.PI*2)/NUM;
 function Render() {
 
   const time = ( .0001 * (performance.now()-startTime)) % loopDuration;
   const time1 = ( .001 * (performance.now()-startTime)) % loopDuration;
-
+  const peak = 1-time/loopDuration;
   objs.forEach((gun, id) => {
+    console.log(id);
 
     gun.position.set(
       Math.cos(id * 2 *Math.PI/NUM)*radius,
@@ -118,8 +120,10 @@ function Render() {
       (time*Math.PI*2) + id*(1.7),
       0
     );
-   gun.scale.setScalar(0.7+InOutQuint(Math.sin((time1*Math.PI/loopDuration))))/2;
-    // console.log(InOutQuint(Math.sin((time1/loopDuration))));
+   gun.scale.setScalar(0.2+ InOutQuint(((Math.sin((time1+(((((2*Math.PI)/NUM)*6*(1+id))))/loopDuration))+1)    )    )/2);
+  //  id ==2 && console.log(0.7+InOutQuint(Math.sin((time1*(Math.PI+( Math.PI*id/50))/loopDuration)))/2);
+  // console.log(Math.sin(time1*((2*Math.PI*(id/NUM))/loopDuration)));
+   //(id*(2*Math.PI/NUM)
     // gun.scale.setScalar(1 + 0.2*Math.sin(10*time*Math.PI*2 + id * 200));
   })
 
