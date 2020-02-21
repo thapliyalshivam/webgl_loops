@@ -120,8 +120,9 @@ function Render() {
       (time*Math.PI*2) + id*(1.7),
       0
     );
-   gun.scale.setScalar(0.2+ InOutQuint(((Math.sin((time1+(((((8*Math.PI)/NUM)*100*(id))))/loopDuration))+1)/2)    )/2);
-   console.log((Math.sin((time1+(((((8*Math.PI)/NUM)*100*(id))))/loopDuration))+1)/2);
+   gun.scale.setScalar(0.7+ InOutQuint(((Math.sin((time1+(((((6*Math.PI)/NUM)*100*(id))))/loopDuration))+1)/2))/2);
+
+//gun.scale.setScalar(0.3+ InOutQuint(((Math.sin((time1+(((((100*Math.PI)/NUM)*(id+1))))/loopDuration))+1)/2))/2);
   //  gun.scale.setScalar(0.2+ InOutQuint(((Math.sin((time1/loopDuration+(((((2*Math.PI)/NUM)*6*(id))))))+1)    )    )/2);
   //  id ==2 && console.log(0.7+InOutQuint(Math.sin((time1*(Math.PI+( Math.PI*id/50))/loopDuration)))/2);
   // console.log(Math.sin(time1*((2*Math.PI*(id/NUM))/loopDuration)));
