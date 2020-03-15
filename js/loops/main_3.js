@@ -1,4 +1,9 @@
 
+
+var gui = new dat.GUI();
+let zz={xx:3};
+  gui.add(zz, 'xx');
+
 //scene setup
 var scene = new THREE.Scene();
 //scene.fog = new THREE.Fog(0x0000ff, 0,300);
@@ -13,7 +18,10 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setClearColor(new THREE.Color(0x0000ff), 1.0);
 
 const canvas = renderer.domElement;
-const heading = "Gun Flower";
+// let cassa;
+import cassa from '../lib/cassandra.js';
+console.log(cassa);
+const heading =cassa ;
 const isVR = !false;
 
 //postprocessing setup
@@ -22,7 +30,7 @@ var params = {
   background: false,
   exposure: 1.4,
   bloomStrength: 2.1,
-  bloomThreshold: 0,
+  bloomThreshold: 0,  
   bloomRadius: 0.72
 };
 
