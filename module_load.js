@@ -17,16 +17,26 @@ let head, animationLoop, vbutton;
       head  = document.createElement("h4");
     head.innerHTML = module.heading;
     head.style.position="absolute";
-    head.style.position= "absolute";
-    head.style.top= "0";
+    head.style.bottom= "0px";
+    head.style.right= "0px";
     head.style["font-weight"]="500";
     head.style.color= "white";
-    head.style.background= "#272bca";
-    head.style.padding= "8px 55px";
-    head.style["border-radius"] = "6px";
-    head.style["font-family"]= "arial";
+    head.style.background= "#000000";
+    head.style['font-size'] = "32px";
+    head.style.padding= "16px 32px";
+    head.style["border-radius"] = "0px";
+    head.style["font-family"]= "sans-serif";
     document.body.appendChild(head);
   }
+
+
+  let left  = document.createElement("div");
+    head.innerHTML = module.heading;
+    head.style.position="absolute";
+
+    head.style.background= "#000000";
+   
+    document.body.appendChild(left);
 
   function update() {
     // console.log(module);
