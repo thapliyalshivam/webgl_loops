@@ -31,12 +31,39 @@ let head, animationLoop, vbutton;
 
 
   let left  = document.createElement("div");
-    head.innerHTML = module.heading;
-    head.style.position="absolute";
-
-    head.style.background= "#000000";
    
+    left.style.position=" absolute";
+    left.style.top=" 50%";
+    left.style.transform="rotate(45deg)";
+    left.style.height=" 40px";
+    left.style["border-bottom"]=" 10px solid white";
+    left.style["border-left"]="10px solid white";
+    left.style.width=" 40px";
+    left.style.background=" #5f9ea000";
     document.body.appendChild(left);
+
+
+
+
+
+
+
+
+
+    
+    let right  = document.createElement("div");
+
+    right.style.position=" absolute";
+    right.style.right="0px";
+    right.style.top=" 50%";
+    right.style.transform="rotate(-135deg)";
+    right.style.height=" 40px";
+    right.style["border-bottom"]=" 10px solid white";
+    right.style["border-left"]="10px solid white";
+    right.style.width=" 40px";
+    right.style.background=" #5f9ea000";
+    document.body.appendChild(right);
+
 
   function update() {
     // console.log(module);
