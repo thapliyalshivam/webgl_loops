@@ -75,12 +75,13 @@ var material = new THREE.MeshStandardMaterial({
 
 
 var loader = new THREE.OBJLoader();
-loader.load('./././models/flower.obj', function (object) {
+loader.load('./././models/pot.obj', function (object) {
 
-
+let ct = 0;
   object.traverse(function (child) {
     if (child instanceof THREE.Mesh) {
       child.material = material;
+      console.log(++ct);
     }
   });
 
