@@ -26,7 +26,7 @@ let head, animationLoop, vbutton;
     head.style.padding= "16px 32px";
     head.style["border-radius"] = "0px";
     head.style["font-family"]= "sans-serif";
-    document.body.appendChild(head);
+    // document.body.appendChild(head);
   }
 
 
@@ -40,7 +40,7 @@ let head, animationLoop, vbutton;
     left.style["border-left"]="10px solid white";
     left.style.width=" 40px";
     left.style.background=" #5f9ea000";
-    document.body.appendChild(left);
+    // document.body.appendChild(left);
 
 
 
@@ -62,12 +62,12 @@ let head, animationLoop, vbutton;
     right.style["border-left"]="10px solid white";
     right.style.width=" 40px";
     right.style.background=" #5f9ea000";
-    document.body.appendChild(right);
+    // document.body.appendChild(right);
 
 
   function update() {
   
-      document.body.appendChild(  module.arbs );
+      // document.body.appendChild(  module.arbs );
       animationLoop = requestAnimationFrame(update);
       module.Render();
     
@@ -114,7 +114,7 @@ async function refresh(){
     head.style.padding= "16px 32px";
     head.style["border-radius"] = "0px";
     head.style["font-family"]= "sans-serif";
-    document.body.appendChild(head);
+    // document.body.appendChild(head);
   }
   update();
  }

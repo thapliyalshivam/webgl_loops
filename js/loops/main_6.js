@@ -34,8 +34,8 @@ console.log(cassa);
 const heading = cassa;
 const isVR = false;
 const isAR = true;
-
-let arbs = ARButton.createButton(renderer);
+document.body.appendChild( ARButton.createButton( renderer ) );
+// let arbs = ARButton.createButton(renderer);
 
 //postprocessing setup
 // var params = {
