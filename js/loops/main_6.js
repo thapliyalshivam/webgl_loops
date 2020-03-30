@@ -1,6 +1,6 @@
 
 var container;
-var gui = new dat.GUI();
+// var gui = new dat.GUI();
 
 
 //scene setup
@@ -86,8 +86,8 @@ var material = new THREE.MeshStandardMaterial({
 });
 
 
-gui.add(material, 'metalness', 0.0, 1.0);
-gui.add(material, 'roughness', 0.0, 1.0);
+// gui.add(material, 'metalness', 0.0, 1.0);
+// gui.add(material, 'roughness', 0.0, 1.0);
 
 console.log(material);
 
