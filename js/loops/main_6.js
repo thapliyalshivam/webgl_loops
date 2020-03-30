@@ -14,13 +14,8 @@ import { ARButton } from './node_modules/three/examples/jsm/webxr/ARButton.js';
 console.log(THREE.REVISION);
 var scene = new THREE.Scene();
 //scene.fog = new THREE.Fog(0x0000ff, 0,300);
-var camera = new THREE.PerspectiveCamera(15,
-  window.innerWidth / window.innerHeight,
-  0.1,
-  2000);
+var camera = new THREE.PerspectiveCamera(170, window.innerWidth / window.innerHeight, 0.01, 20);
   
-camera.position.z = 12;
-gui.add(camera.position, 'z');
 
 var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 console.log(renderer);
@@ -110,6 +105,9 @@ console.log(material);
 let loader = new GLTFLoader();
 loader.load("./././models/cove.glb", function (gltf) {
 
+  var geometry = new THREE.CylinderBufferGeometry( 0, 0.05, 0.2, 32 ).rotateX( Math.PI / 2 );
+  var meshy = new THREE.Mesh( geometry, material );
+scene.add(meshy);
   gltf.scene.traverse(function (child) {
 
     if (child.isMesh) {
@@ -124,6 +122,8 @@ loader.load("./././models/cove.glb", function (gltf) {
   // gun = gltf;
   init();
 });
+
+
 
 
 
@@ -146,7 +146,7 @@ function init() {
 
 const loopDuration = 41;
 var startTime = performance.now();
-const radius = 1;
+const radius = 13;
 const turn = (Math.PI * 2) / NUM;
 function Render() {
 
@@ -166,7 +166,7 @@ function Render() {
       (time * Math.PI * 2) + id * (1.7),
       0
     );
-    gun.scale.setScalar(0.7 + InOutQuint(((Math.sin((time1 + (((((6 * Math.PI) / NUM) * 100 * (id)))) / loopDuration)) + 1) / 2)) / 2);
+    gun.scale.setScalar(.7 + InOutQuint(((Math.sin((time1 + (((((6 * Math.PI) / NUM) * 100 * (id)))) / loopDuration)) + 1) / 2)) / 2);
 
     //gun.scale.setScalar(0.3+ InOutQuint(((Math.sin((time1+(((((100*Math.PI)/NUM)*(id+1))))/loopDuration))+1)/2))/2);
     //  gun.scale.setScalar(0.2+ InOutQuint(((Math.sin((time1/loopDuration+(((((2*Math.PI)/NUM)*6*(id))))))+1)    )    )/2);
