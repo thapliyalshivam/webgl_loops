@@ -212,5 +212,5 @@ function Render() {
   renderer.render(scene, camera);
 }
 
-export { canvas, Render, heading, renderer, isVR ,arbs};
+export { canvas, Render, heading, renderer, isVR };
 //export  {canvas,Render,heading};
