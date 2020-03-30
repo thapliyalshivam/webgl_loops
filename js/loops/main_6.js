@@ -3,6 +3,8 @@ var container;
 // var gui = new dat.GUI();
 
 
+container = document.createElement( 'div' );
+				document.body.appendChild( container );
 //scene setup
 import * as THREE from './node_modules/three/src/Three.js';
 import { OBJLoader } from './node_modules/three/examples/jsm/loaders/OBJLoader.js';
@@ -24,9 +26,9 @@ var renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
 
 
 const canvas = renderer.domElement;
-container = document.createElement( 'div' );
-				document.body.appendChild( container );
         container.appendChild( renderer.domElement );
+
+document.body.appendChild( ARButton.createButton( renderer ) );
 
 // let cassa;
 import cassa from '../lib/cassandra.js';
@@ -34,7 +36,6 @@ console.log(cassa);
 const heading = cassa;
 const isVR = false;
 const isAR = true;
-document.body.appendChild( ARButton.createButton( renderer ) );
 // let arbs = ARButton.createButton(renderer);
 
 //postprocessing setup
