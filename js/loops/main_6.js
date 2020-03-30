@@ -108,7 +108,7 @@ console.log(material);
 
 
 let loader = new GLTFLoader();
-loader.load("./././models/cove.glb", function (gltf) {
+loader.load("/models/cove.glb", function (gltf) {
 
   gltf.scene.traverse(function (child) {
 
