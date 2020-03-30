@@ -1,5 +1,5 @@
 
-
+var container;
 var gui = new dat.GUI();
 
 
@@ -24,6 +24,10 @@ var renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
 
 
 const canvas = renderer.domElement;
+container = document.createElement( 'div' );
+				document.body.appendChild( container );
+        container.appendChild( renderer.domElement );
+
 // let cassa;
 import cassa from '../lib/cassandra.js';
 console.log(cassa);
