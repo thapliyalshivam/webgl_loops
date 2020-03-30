@@ -4,7 +4,9 @@ async function getscript(){
     const num = window.location.hash.substr(1) || 1;
     const module = await
     import (`./js/loops/main_${num}.js`);
-    document.body.appendChild(module.canvas);
+    var 	container = document.createElement( 'div' );
+    document.body.appendChild( container );
+    container.appendChild( module.canvas);
     return module;
 }
 
