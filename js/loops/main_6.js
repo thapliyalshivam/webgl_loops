@@ -14,7 +14,7 @@ import { ARButton } from './node_modules/three/examples/jsm/webxr/ARButton.js';
 console.log(THREE.REVISION);
 var scene = new THREE.Scene();
 //scene.fog = new THREE.Fog(0x0000ff, 0,300);
-var camera = new THREE.PerspectiveCamera(170, window.innerWidth / window.innerHeight, 0.01, 20);
+var camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 20);
   
 
 var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -117,6 +117,17 @@ var geometry = new THREE.CylinderBufferGeometry( 0, 0.05, 0.2, 32 ).rotateX( Mat
 				controller = renderer.xr.getController( 0 );
 				controller.addEventListener( 'select', onSelect );
 				scene.add( controller );
+        window.addEventListener( 'resize', onWindowResize, false );
+
+        function onWindowResize() {
+
+          camera.aspect = window.innerWidth / window.innerHeight;
+          camera.updateProjectionMatrix();
+  
+          renderer.setSize( window.innerWidth, window.innerHeight );
+  
+        }
+
 
 
 let loader = new GLTFLoader();
