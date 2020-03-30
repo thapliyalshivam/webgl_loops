@@ -1,5 +1,9 @@
 
 //scene setup
+
+import * as THREE from './node_modules/three/src/Three.js';
+import { OBJLoader } from './node_modules/three/examples/jsm/loaders/OBJLoader.js';
+import { GLTFLoader } from './node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 var scene = new THREE.Scene();
 //scene.fog = new THREE.Fog(0x0000ff, 0,300);
 var camera = new  THREE.PerspectiveCamera(75,

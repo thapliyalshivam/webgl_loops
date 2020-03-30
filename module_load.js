@@ -66,16 +66,24 @@ let head, animationLoop, vbutton;
 
 
   function update() {
-    // console.log(module);
-    if(module.isVR!=undefined&&module.isVR){
-      vbutton = WEBVR.createButton( module.renderer )
-      document.body.appendChild(  vbutton );
-      module.renderer.setAnimationLoop(module.Render);}
-    else{
+  
+      document.body.appendChild(  module.arbs );
       animationLoop = requestAnimationFrame(update);
       module.Render();
-        }
+    
   }
+  // function update() {
+  //   // console.log(module);
+  //   if(module.isVR!=undefined&&module.isVR){
+  //     vbutton = WEBVR.createButton( module.renderer )
+  //     document.body.appendChild(  vbutton );
+  //     module.renderer.setAnimationLoop(module.Render);}
+  //   else{
+  //     document.body.appendChild(  module.arbs );
+  //     animationLoop = requestAnimationFrame(update);
+  //     module.Render();
+  //       }
+  // }
 
   update();
 

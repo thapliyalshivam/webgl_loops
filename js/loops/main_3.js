@@ -1,4 +1,7 @@
 
+import * as THREE from './node_modules/three/src/Three.js';
+import { OBJLoader } from './node_modules/three/examples/jsm/loaders/OBJLoader.js';
+import { GLTFLoader } from './node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 
 var gui = new dat.GUI();
 let zz={xx:3};
@@ -74,12 +77,12 @@ var material = new THREE.MeshStandardMaterial({
 
 
 
-var loader = new THREE.OBJLoader();
+var loader = new OBJLoader();
 loader.load('./././models/yo.obj', function (object) {
 
 
   object.traverse(function (child) {
-    if (child instanceof THREE.Mesh) {
+    if (child.isMesh) {
       child.material = material;
     }
   });
