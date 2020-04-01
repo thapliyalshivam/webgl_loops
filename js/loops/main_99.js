@@ -85,12 +85,12 @@ var canvas;
 
 			}
 
-			function render() {
+			function Render() {
 
 				renderer.render( scene, camera );
 
 			}
 let pp = "asda";
 let isVR = false;
-export { canvas, render, pp, renderer, isVR };
+export { canvas, Render, pp, renderer, isVR };
 //export  {canvas,Render,heading};
