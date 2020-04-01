@@ -60,7 +60,7 @@ let head, animationLoop, vbutton;
 
   function update() {
       // document.body.appendChild(  module.arbs );
-      animationLoop = requestAnimationFrame(update);
+      // animationLoop = requestAnimationFrame(update);
       // module.Render();
     
   }
