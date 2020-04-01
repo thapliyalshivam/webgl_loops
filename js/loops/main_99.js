@@ -85,7 +85,7 @@ var canvas;
 
 			}
 
-			function Render() {
+			function render() {
 
 				renderer.render( scene, camera );
 
