@@ -43,13 +43,6 @@ let head, animationLoop, vbutton;
     // document.body.appendChild(left);
 
 
-
-
-
-
-
-
-
     
     let right  = document.createElement("div");
 
@@ -66,10 +59,9 @@ let head, animationLoop, vbutton;
 
 
   function update() {
-  
       // document.body.appendChild(  module.arbs );
       animationLoop = requestAnimationFrame(update);
-      module.Render();
+      // module.Render();
     
   }
   // function update() {
@@ -85,7 +77,7 @@ let head, animationLoop, vbutton;
   //       }
   // }
 
-  update();
+  // update();
 
 async function refresh(){
   if (module && module.canvas)

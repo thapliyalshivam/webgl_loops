@@ -16,7 +16,7 @@ var canvas;
 			var controller;
 
 			init();
-			// animate();
+			animate();
 
 			function init() {
 
@@ -92,5 +92,5 @@ var canvas;
 			}
 let pp = "asda";
 let isVR = false;
-export { canvas, Render, pp, renderer, isVR };
+export { canvas, pp, renderer, isVR };
 //export  {canvas,Render,heading};
