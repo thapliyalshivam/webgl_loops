@@ -81,7 +81,7 @@ var canvas;
 
 			function animate() {
 
-				renderer.setAnimationLoop( render );
+				XRSession.requestAnimationFrame( render );
 
 			}
 
