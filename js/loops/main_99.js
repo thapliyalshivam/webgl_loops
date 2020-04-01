@@ -11,6 +11,7 @@ import { OBJLoader } from './node_modules/three/examples/jsm/loaders/OBJLoader.j
 import { GLTFLoader } from './node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 import { ARButton } from './node_modules/three/examples/jsm/webxr/ARButton.js';
 var container;
+var canvas;
 			var camera, scene, renderer;
 			var controller;
 
@@ -31,11 +32,12 @@ var container;
 				scene.add( light );
 
         //
-        var can = renderer.domElement;
 				renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
-				renderer.xr.enabled = true;
+        renderer.xr.enabled = true;
+        
+        canvas = renderer.domElement;
 				container.appendChild( renderer.domElement );
 
 				//
@@ -89,5 +91,6 @@ var container;
 
 			}
 let pp = "asda";
-export { can, render, pp, renderer, isVR };
+let isVR = false;
+export { canvas, render, pp, renderer, isVR };
 //export  {canvas,Render,heading};
