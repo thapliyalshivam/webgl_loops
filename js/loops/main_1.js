@@ -1,4 +1,5 @@
-import THREE from '../third_party/three.js';
+
+import * as THREE from './node_modules/three/src/Three.js';
 
 var scene = new THREE.Scene();
 
@@ -15,7 +16,7 @@ renderer.setSize(window.innerWidth,window.innerHeight);
 
 const canvas = renderer.domElement;
 
-//document.body.appendChild( renderer.domElement );
+document.body.appendChild( renderer.domElement );
 
 var m = new THREE.Object3D();
 
@@ -74,6 +75,16 @@ plane.position.y=0;
 m.rotation.x = 100;
 m.dynamic= true;
 //Render();
+
+animate();
+function animate() {
+	renderer.setAnimationLoop(Render);
+}
+
+
+
+
+
 function Render(){
 				var time = Date.now() * 0.0005;
 				light1.position.x = Math.sin( time * 0.7 ) * 30;

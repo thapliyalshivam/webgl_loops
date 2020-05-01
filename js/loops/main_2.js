@@ -17,7 +17,9 @@ renderer.toneMapping = THREE.ReinhardToneMapping;
 renderer.setSize(window.innerWidth,window.innerHeight);
 renderer.setClearColor(new THREE.Color(0x000F4E),1.0);
 
+
 const canvas = renderer.domElement;
+document.body.append(canvas);
 
 //postprocessing setup
 var params = {
@@ -91,6 +93,15 @@ for (let i=0;i<=halos;++i){
   holder.add(dub1);
 }
 scene.add(holder);
+
+
+// init();
+animate();
+function animate() {
+
+	renderer.setAnimationLoop(Render);
+
+}
 
 
 function Render(){

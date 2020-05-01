@@ -5,6 +5,12 @@ let zz={xx:3};
   gui.add(zz, 'xx');
 
 //scene setup
+
+import * as THREE from './node_modules/three/src/Three.js';
+
+import { OBJLoader } from './node_modules/three/examples/jsm/loaders/OBJLoader.js';
+import { GLTFLoader } from './node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+
 var scene = new THREE.Scene();
 //scene.fog = new THREE.Fog(0x0000ff, 0,300);
 var camera = new THREE.PerspectiveCamera(15,
@@ -18,6 +24,8 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setClearColor(new THREE.Color(0x7700ff), 1.0);
 
 const canvas = renderer.domElement;
+
+document.body.appendChild( renderer.domElement );
 // let cassa;
 import cassa from '../lib/cassandra.js';
 console.log(cassa);
@@ -74,12 +82,12 @@ var material = new THREE.MeshStandardMaterial({
 
 
 
-var loader = new THREE.OBJLoader();
-loader.load('./././models/pot.obj', function (object) {
+var loader = new OBJLoader();
+loader.load('./././models/yo.obj', function (object) {
 
 let ct = 0;
   object.traverse(function (child) {
-    if (child instanceof THREE.Mesh) {
+    if (child.isMesh) {
       child.material = material;
       console.log(++ct);
     }
@@ -111,6 +119,17 @@ const loopDuration = 41;
 var startTime = performance.now();
 const radius = 1;
 const turn = (Math.PI*2)/NUM;
+
+animate();
+function animate() {
+
+	renderer.setAnimationLoop(Render);
+
+}
+
+
+
+
 function Render() {
 
   const time = ( .0001 * (performance.now()-startTime)) % loopDuration;

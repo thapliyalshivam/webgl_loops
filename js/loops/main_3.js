@@ -21,6 +21,8 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setClearColor(new THREE.Color(0x0000ff), 1.0);
 
 const canvas = renderer.domElement;
+
+document.body.appendChild( canvas );
 // let cassa;
 import cassa from '../lib/cassandra.js';
 console.log(cassa);
@@ -113,6 +115,17 @@ const loopDuration = 41;
 var startTime = performance.now();
 const radius = 1;
 const turn = (Math.PI*2)/NUM;
+
+
+// init();
+animate();
+function animate() {
+
+	renderer.setAnimationLoop(Render);
+
+}
+
+
 function Render() {
 
   const time = ( .0001 * (performance.now()-startTime)) % loopDuration;
