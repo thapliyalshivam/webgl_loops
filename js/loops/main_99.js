@@ -14,11 +14,40 @@ var container;
 var canvas;
 var camera, scene, renderer;
 var controller;
+var gun;
 
 init();
 animate();
 
 function init() {
+
+
+
+	material = new THREE.MeshStandardMaterial({
+		map: new THREE.TextureLoader().load("./././images/cab.png"),
+		metalness: 0.61,
+		roughness: 0.5,
+	  });
+	  
+
+	let loader = new GLTFLoader();
+loader.load("./././models/cove.glb", function (gltf) {
+
+  gltf.scene.traverse(function (child) {
+
+    if (child.isMesh) {
+      gun = child;
+      child.material = material;
+
+    }
+  });
+  // createScene( gltf.scene.children[ 0 ].geometry, 100, material );
+  // gltf.scene.children[ 0 ].map=new THREE.TextureLoader().load("./././images/cab.png");
+  // let mesh = new THREE.Mesh( gltf.scene.children[0].geometry, material );
+  // gun = gltf;
+});
+
+
 
 	container = document.createElement('div');
 	document.body.appendChild(container);
@@ -50,11 +79,11 @@ function init() {
 
 	function onSelect() {
 
-		var material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random() });
-		var mesh = new THREE.Mesh(geometry, material);
-		mesh.position.set(0, 0, - 0.3).applyMatrix4(controller.matrixWorld);
-		mesh.quaternion.setFromRotationMatrix(controller.matrixWorld);
-		scene.add(mesh);
+		// var material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random() });
+		// var mesh = new THREE.Mesh(geometry, material);
+		gun.position.set(0, 0, - 0.3).applyMatrix4(controller.matrixWorld);
+		gun.quaternion.setFromRotationMatrix(controller.matrixWorld);
+		scene.add(gun);
 
 	}
 
