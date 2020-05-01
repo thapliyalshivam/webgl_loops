@@ -19,7 +19,7 @@ var camera = new THREE.PerspectiveCamera(15,
   2000);
   
 camera.position.z = 12;
-gui.add(camera.position, 'z');
+gui.add(camera.position, 'z'); 
 
 var renderer = new THREE.WebGLRenderer();
 console.log(renderer);
@@ -30,6 +30,8 @@ renderer.setClearColor(new THREE.Color(0x7700ff), 1.0);
 
 
 const canvas = renderer.domElement;
+
+document.body.appendChild( renderer.domElement );
 // let cassa;
 import cassa from '../lib/cassandra.js';
 import { ARButton } from '../lib/ARButton.js';
@@ -148,6 +150,19 @@ const loopDuration = 41;
 var startTime = performance.now();
 const radius = 1;
 const turn = (Math.PI * 2) / NUM;
+
+
+// init();
+animate();
+function animate() {
+
+	renderer.setAnimationLoop(Render);
+
+}
+
+
+
+
 function Render() {
 
   const time = (.0001 * (performance.now() - startTime)) % loopDuration;
