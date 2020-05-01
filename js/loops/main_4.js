@@ -21,7 +21,7 @@ camera.position.z = 12;
 
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setClearColor(new THREE.Color(0x7700ff), 1.0);
+renderer.setClearColor(new THREE.Color(0x1ed8b7), 1.0);
 
 const canvas = renderer.domElement;
 
@@ -75,15 +75,17 @@ var holder = new THREE.Group();
 const halos = 40;
 var gun;
 var material = new THREE.MeshStandardMaterial({
-  map: new THREE.TextureLoader().load("./././images/cab.png"),
-  metalness: 0.61,
-  roughness: 0.5,
+  map: new THREE.TextureLoader().load("./././images/dawn.png"),
+  metalness: 0.39,
+  roughness: 0.38,
 });
 
 
 
+gui.add(material, 'metalness', 0.0, 1.0);
+gui.add(material, 'roughness', 0.0, 1.0);
 var loader = new OBJLoader();
-loader.load('./././models/yo.obj', function (object) {
+loader.load('./././models/flower.obj', function (object) {
 
 let ct = 0;
   object.traverse(function (child) {
