@@ -5,6 +5,7 @@ async function getscript(){
     const module = await
     import (`./js/loops/main_${num}.js`);
     // document.body.appendChild(module.canvas);
+    // writing chunk name asyn loader.
     return module;
 }
 
