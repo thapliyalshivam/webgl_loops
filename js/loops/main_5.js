@@ -62,8 +62,6 @@ let ARbutton = ARButton.createButton(renderer);
 scene.add(new THREE.AmbientLight(0xeeeeee));
 var directionalLight = new THREE.DirectionalLight(0xffffff, 3);
 
-
-
 var directionalLight = new THREE.DirectionalLight(0xffffff, .5);
 directionalLight.position.set(-2, 2, 2);
 directionalLight.castShadow = true;
