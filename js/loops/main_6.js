@@ -10,7 +10,7 @@ window.ctx = ctx;
 var gui = new dat.GUI();
 var controls = {
   SIZE: 4,
-  NUMBER: 66,
+  NUMBER: 200,
 }
 gui.add(controls, 'SIZE', 2, 20);
 
