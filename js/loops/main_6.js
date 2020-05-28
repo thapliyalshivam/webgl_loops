@@ -1,5 +1,7 @@
 //imports and set up the canvas
-import {add} from "../lib/commonFunc.js";
+import {add,ParticleMovement} from "../lib/commonFunc.js";
+
+
 import {canvas,ctx} from "../lib/2d_context.js";
 document.body.appendChild( canvas );
 window.ctx=ctx;
@@ -27,27 +29,36 @@ const renderer=null;
 
 
 function clearBg(){
-  ctx.fillStyle = colours.base_blue;
-  ctx.globalAlpha = 0.2;
-  ctx.fillRect(0, 0, canvas.width,canvas.height);
-  ctx.globalAlpha = 1;
+  ctx.rect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = `rgba(27, 35, 74,0.2)` // use the rgb array/color for fill, and amt for opacity
+ ctx.fill()
 }
 
 var Dot = function(){
   this.x=0;
   this.y=0;
   this.colour=colours.green;
+  this.dots=[];
+
+  for (var i=0;i<=30;i++){
+    this.dots.push([new ParticleMovement(),100+Math.random()*200,100+Math.random()*200]);
+  }
+
+
   };
   
   Dot.prototype.draw=function(){
     ctx.fillStyle = this.colour;
-    ctx.fillRect(this.x, this.y, 4, 4);
+    for (var i=0;i<=30;i++){
+      ctx.fillRect(this.dots[i][1]*this.dots[i][0].dx, this.dots[i][2]*this.dots[i][0].dy, 4, 4);
+    }
+  
   }
   Dot.prototype.update=function(){
-   this.x += 1;
+    for (var i=0;i<=30;i++){
+      this.dots[i][0].update();
+    }
   }
-  
-
 
 
 let dd = new Dot();
@@ -60,6 +71,7 @@ function Render() {
 clearBg();
 dd.update();
 dd.draw();
+
 
 window.requestAnimationFrame(Render);
 }
