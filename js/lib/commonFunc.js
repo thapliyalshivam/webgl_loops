@@ -1,12 +1,13 @@
+//Basic math Functions
+
 var add = function(a,b){
 return a+b;
-
 }
 
 
+//Particle Equations
 
 function ParticleMovement(config){
-
 this.dx = 0;
 this.dy = 0;
 this.stepRange = 100;
@@ -23,12 +24,8 @@ this.update=function(){
   // this.dy  =Math.cos(2*Math.PI*this.norm/this.step)*this.config.diff 
   this.dx = Math.sin(vv)*this.diff  +  Math.cos(vv)*Math.cos(v2)*Math.random()*2
   this.dy  =Math.cos(vv)*this.diff  +  Math.sin(vv)*Math.sin(v2)*Math.random()*2
-
 this.step = (this.step+1)%this.stepRange;
-
 }
-
-
 }
 
 
@@ -38,9 +35,24 @@ function InOutQuint(t) {
   }
 
 
+
+
+//Colour Conversions
+let col={}
+
+col.HextoHexa =(Hex)=>{
+if (Hex ===undefined){
+  console.log("No value passed to HextoHexa");
+  return
+}
+
+
+}
+
 export{
 add,
 InOutQuint,
-ParticleMovement
+ParticleMovement,
+col
 
 };

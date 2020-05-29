@@ -16,10 +16,9 @@ gui.add(controls, 'SIZE', 2, 20);
 
 
 // let cassa;
-import cassa from '../lib/cassandra.js';
 import colours from "../lib/colours.js";
-console.log(cassa);
-const heading = cassa;
+
+const heading = "Worms";
 const isVR = false;
 const isAR = true;
 const renderer = null;

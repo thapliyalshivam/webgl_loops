@@ -1,56 +1,55 @@
-
-
-var gui = new dat.GUI();
-let zz={xx:3};
-  gui.add(zz, 'xx');
-
-//scene setup
-
 import * as THREE from './node_modules/three/src/Three.js';
-
 import { OBJLoader } from './node_modules/three/examples/jsm/loaders/OBJLoader.js';
 import { GLTFLoader } from './node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import colours from "../lib/colours.js";
 
+//Setting control GUI and data
+var gui = new dat.GUI();
+const heading ="Gold and blue" ;
+const isVR = !false;
+console.log(colours.acid_orange);
+
+var controls = {
+  SIZE: 4,
+  NUMBER: 200,
+}
+   
+//Scene Setup
 var scene = new THREE.Scene();
-//scene.fog = new THREE.Fog(0x0000ff, 0,300);
 var camera = new THREE.PerspectiveCamera(15,
   window.innerWidth / window.innerHeight,
   0.1,
   2000);
 camera.position.z = 12;
-
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setClearColor(new THREE.Color(0x1ed8b7), 1.0);
+renderer.setClearColor(new THREE.Color(colours.acid_blue), 1.0);
 
+
+gui.add(camera.position, 'z', 2, 20);
+
+//Append the canvas to the dom
 const canvas = renderer.domElement;
-
 document.body.appendChild( renderer.domElement );
-// let cassa;
-const heading ="Flower Power" ;
-const isVR = !false;
 
 //postprocessing setup
-var params = {
-  projection: 'normal',
-  background: false,
-  exposure: 1.4,
-  bloomStrength: 2.1,
-  bloomThreshold: 0,  
-  bloomRadius: 0.72
-};
+  // var params = {
+  //   projection: 'normal',
+  //   background: false,
+  //   exposure: 1.4,
+  //   bloomStrength: 2.1,
+  //   bloomThreshold: 0,  
+  //   bloomRadius: 0.72
+  // };
+  // renderer.gammaInput = true;
+  // renderer.gammaOutput = true;
+  // renderer.toneMappingExposure = Math.pow( params.exposure, 1.0 );
 
 
-// //rendering composer
-// renderer.gammaInput = true;
-// renderer.gammaOutput = true;
-// renderer.toneMappingExposure = Math.pow( params.exposure, 1.0 );
 
-
+//Light Setup
 scene.add(new THREE.AmbientLight(0xeeeeee));
 var directionalLight = new THREE.DirectionalLight(0xffffff, 3);
-
-
 
 var directionalLight = new THREE.DirectionalLight(0xffffff, .5);
 directionalLight.position.set(-2, 2, 2);
@@ -67,20 +66,32 @@ directionalLight2.shadow.camera.far = 10;
 scene.add(directionalLight2);
 // scene.add( new THREE.HemisphereLight( 0x443333, 0x222233, 4 ) );
 
+
+
+
+
+
+
 //add geometries below
 var holder = new THREE.Group();
 
 const halos = 40;
 var gun;
+
 var material = new THREE.MeshStandardMaterial({
-  map: new THREE.TextureLoader().load("./././images/dawn.png"),
-  metalness: 0.39,
-  roughness: 0.38,
+ // map: new THREE.TextureLoader().load("./././images/dawn.png"),
+  color: new THREE.Color(colours.acid_yellow),
+  envMap: new THREE.TextureLoader().load("./././images/dawn.png"),
+  bumpMap:new THREE.TextureLoader().load("./././images/bump_dotted.jpg"),
+  bumpScale:0.004,
+  metalness: 0.83,
+  roughness: 0.34,
 });
 
 
 
 gui.add(material, 'metalness', 0.0, 1.0);
+gui.add(material, 'bumpScale', 0.0, 0.04);
 gui.add(material, 'roughness', 0.0, 1.0);
 var loader = new OBJLoader();
 loader.load('./././models/flower.obj', function (object) {
@@ -92,8 +103,6 @@ let ct = 0;
       console.log(++ct);
     }
   });
-
-
   gun = object;
   init();
 });
@@ -120,16 +129,16 @@ var startTime = performance.now();
 const radius = 1;
 const turn = (Math.PI*2)/NUM;
 
+
+//Call the animation and set the loop running
 animate();
 function animate() {
-
 	renderer.setAnimationLoop(Render);
-
 }
 
 
 
-
+//Render Loop Function
 function Render() {
 
   const time = ( .0001 * (performance.now()-startTime)) % loopDuration;
@@ -157,11 +166,6 @@ function Render() {
    //(id*(2*Math.PI/NUM)
     // gun.scale.setScalar(1 + 0.2*Math.sin(10*time*Math.PI*2 + id * 200));
   })
-
-
-
-
-
   renderer.render(scene, camera);
 }
 
