@@ -1,0 +1,23 @@
+{
+  "name": "animation_loops",
+  "version": "1.0.0",
+  "description": "Animation loop is a plain vanilla animations made in 2d canvas, using basic amthematical functions and equations. There are also 3d animations used which are made using three.js.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thapliyalshivam/webgl_loops.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thapliyalshivam/webgl_loops/issues"
+  },
+  "homepage": "https://github.com/thapliyalshivam/webgl_loops#readme",
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
