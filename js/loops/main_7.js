@@ -1,10 +1,15 @@
-import * as THREE from './node_modules/three/src/Three.js';
-import { OBJLoader } from './node_modules/three/examples/jsm/loaders/OBJLoader.js';
-import { GLTFLoader } from './node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import * as THREE from '../../node_modules/three/src/Three.js';
+import { OBJLoader } from '../../node_modules/three/examples/jsm/loaders/OBJLoader.js';
+import { GLTFLoader } from '../../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 import colours from "../lib/colours.js";
-import { UnrealBloomPass } from './node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js';
-import { EffectComposer } from './node_modules/three/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from './node_modules/three/examples/jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from '../../node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js';
+import { EffectComposer } from '../../node_modules/three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from '../../node_modules/three/examples/jsm/postprocessing/RenderPass.js';
+import  * as dat from '../../node_modules/dat.gui';
+
+import dawn from "../../images/dawn.png";
+import dotted from "../../images/bump_dotted.jpg";
+import flower from '../../models/flower.obj';
 
 //Setting control GUI and data
 var gui = new dat.GUI();
@@ -130,8 +135,8 @@ var gun;
 var material = new THREE.MeshStandardMaterial({
  // map: new THREE.TextureLoader().load("./././images/dawn.png"),
   color: new THREE.Color(colours.acid_yellow),
-  envMap: new THREE.TextureLoader().load("./././images/dawn.png"),
-  bumpMap:new THREE.TextureLoader().load("./././images/bump_dotted.jpg"),
+  envMap: new THREE.TextureLoader().load(dawn),
+  bumpMap:new THREE.TextureLoader().load(dotted),
   bumpScale:0.004,
   metalness: 0.83,
   roughness: 0.34,
@@ -143,7 +148,7 @@ gui.add(material, 'metalness', 0.0, 1.0);
 gui.add(material, 'bumpScale', 0.0, 0.04);
 gui.add(material, 'roughness', 0.0, 1.0);
 var loader = new OBJLoader();
-loader.load('./././models/flower.obj', function (object) {
+loader.load(flower, function (object) {
 
 let ct = 0;
   object.traverse(function (child) {

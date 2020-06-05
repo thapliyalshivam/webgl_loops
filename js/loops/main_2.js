@@ -1,10 +1,15 @@
 
 //scene setup
 
-import * as THREE from './node_modules/three/src/Three.js';
-import { OBJLoader } from './node_modules/three/examples/jsm/loaders/OBJLoader.js';
-import { GLTFLoader } from './node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import * as THREE from '../../node_modules/three/src/Three.js';
+import  * as dat from '../../node_modules/dat.gui';
+import { OBJLoader } from '../../node_modules/three/examples/jsm/loaders/OBJLoader.js';
+import { GLTFLoader } from '../../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import { RenderPass } from '../../node_modules/three/examples/jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from '../../node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
 var scene = new THREE.Scene();
+var gui = new dat.GUI();
 //scene.fog = new THREE.Fog(0x0000ff, 0,300);
 var camera = new  THREE.PerspectiveCamera(75,
   window.innerWidth/window.innerHeight,
@@ -17,6 +22,8 @@ renderer.toneMapping = THREE.ReinhardToneMapping;
 renderer.setSize(window.innerWidth,window.innerHeight);
 renderer.setClearColor(new THREE.Color(0x000F4E),1.0);
 
+renderer.gammaInput = true;
+renderer.gammaOutput = true;
 
 const canvas = renderer.domElement;
 document.body.append(canvas);
@@ -31,29 +38,44 @@ var params = {
   bloomRadius: 0.72
 };
 
+renderer.toneMappingExposure = Math.pow( params.exposure, 4.0 );
 
-var renderScene = new THREE.RenderPass( scene, camera );
 
-var effectFXAA = new THREE.ShaderPass( THREE.FXAAShader );
-effectFXAA.uniforms[ 'resolution' ].value.set( 1 / window.innerWidth, 1 / window.innerHeight );
+var renderScene = new RenderPass( scene, camera );
 
-var bloomPass = new THREE.UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.innerHeight ), 1.5, 0.4, 0.85 ); //1.0, 9, 0.5, 512);
-bloomPass.bloomStrength= 2.1
-bloomPass.bloomThreshold= 0
-bloomPass.bloomRadius= 0.72
-bloomPass.renderToScreen = true;
+var bloomPass = new UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.innerHeight ), 1.5, 0.4, 0.85 );
+			bloomPass.threshold = params.bloomThreshold;
+			bloomPass.strength = params.bloomStrength;
+      bloomPass.radius = params.bloomRadius;
+
+
+      gui.add( params, 'exposure', 0.1, 2 ).onChange( function ( value ) {
+        renderer.toneMappingExposure = Math.pow( value, 4.0 );
+      } );
+      
+      gui.add( params, 'bloomThreshold', 0.0, 1.0 ).onChange( function ( value ) {
+        bloomPass.threshold = Number( value );
+      } );
+      
+      gui.add( params, 'bloomStrength', 0.0, 3.0 ).onChange( function ( value ) {
+        bloomPass.strength = Number( value );
+      } );
+      
+      gui.add( params, 'bloomRadius', 0.0, 1.0 ).step( 0.01 ).onChange( function ( value ) {
+        bloomPass.radius = Number( value );
+      } );
+      
+      
+      
 
 //rendering composer
 
-var composer = new THREE.EffectComposer( renderer );
+var composer = new EffectComposer( renderer );
 composer.setSize( window.innerWidth, window.innerHeight );
 composer.addPass( renderScene );
-composer.addPass( effectFXAA );
+
 composer.addPass( bloomPass );
 
-renderer.gammaInput = true;
-renderer.gammaOutput = true;
-renderer.toneMappingExposure = Math.pow( params.exposure, 4.0 );
 
 //lights setup
 scene.add( new THREE.AmbientLight( 0x404040 ) );

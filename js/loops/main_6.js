@@ -1,8 +1,10 @@
 //imports and set up the canvas
 import { add, ParticleMovement } from "../lib/commonFunc.js";
+import  * as dat from '../../node_modules/dat.gui';
 
 
 import { canvas, ctx } from "../lib/2d_context.js";
+import colours from "../lib/colours.js";
 document.body.appendChild(canvas);
 window.ctx = ctx;
 
@@ -16,7 +18,6 @@ gui.add(controls, 'SIZE', 2, 20);
 
 
 // let cassa;
-import colours from "../lib/colours.js";
 
 const heading = "Worms";
 const isVR = false;

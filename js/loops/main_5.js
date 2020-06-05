@@ -1,13 +1,13 @@
+//scene setup
+import * as THREE from '../../node_modules/three/src/Three.js';
+import { OBJLoader } from '../../node_modules/three/examples/jsm/loaders/OBJLoader.js';
+import { GLTFLoader } from '../../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import  * as dat from '../../node_modules/dat.gui';
 
+import cab from "../../images/cab.png";
+import cove from '../../models/cove.glb';
 
 var gui = new dat.GUI();
-
-
-//scene setup
-import * as THREE from './node_modules/three/src/Three.js';
-import { OBJLoader } from './node_modules/three/examples/jsm/loaders/OBJLoader.js';
-import { GLTFLoader } from './node_modules/three/examples/jsm/loaders/GLTFLoader.js';
-
 // import  '../lib/OBJLoader.js';
 // var THREE = require('three');
 console.log(THREE.REVISION);
@@ -83,7 +83,7 @@ var holder = new THREE.Group();
 const halos = 40;
 var gun;
 var material = new THREE.MeshStandardMaterial({
-  map: new THREE.TextureLoader().load("./././images/cab.png"),
+  map: new THREE.TextureLoader().load(cab),
   metalness: 0.61,
   roughness: 0.5,
 });
@@ -108,7 +108,7 @@ console.log(material);
 
 
 let loader = new GLTFLoader();
-loader.load("./././models/cove.glb", function (gltf) {
+loader.load(cove, function (gltf) {
 
   gltf.scene.traverse(function (child) {
 

@@ -1,5 +1,5 @@
 
-import * as THREE from './node_modules/three/src/Three.js';
+import * as THREE from '../../node_modules/three/src/Three.js';
 
 var scene = new THREE.Scene();
 

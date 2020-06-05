@@ -1,7 +1,15 @@
 
-import * as THREE from './node_modules/three/src/Three.js';
-import { OBJLoader } from './node_modules/three/examples/jsm/loaders/OBJLoader.js';
-import { GLTFLoader } from './node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import * as THREE from '../../node_modules/three/src/Three.js';
+import  * as dat from '../../node_modules/dat.gui';
+import { OBJLoader } from '../../node_modules/three/examples/jsm/loaders/OBJLoader.js';
+import { GLTFLoader } from '../../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import { RenderPass } from '../../node_modules/three/examples/jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from '../../node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
+
+
+import cab from "../../images/cab.png";
+import yo from "../../models/yo.obj";
 
 var gui = new dat.GUI();
 let zz={xx:3};
@@ -72,7 +80,7 @@ var holder = new THREE.Group();
 const halos = 40;
 var gun;
 var material = new THREE.MeshStandardMaterial({
-  map: new THREE.TextureLoader().load("./././images/cab.png"),
+  map: new THREE.TextureLoader().load(cab),
   metalness: 0.61,
   roughness: 0.5,
 });
@@ -80,7 +88,7 @@ var material = new THREE.MeshStandardMaterial({
 
 
 var loader = new OBJLoader();
-loader.load('./././models/yo.obj', function (object) {
+loader.load(yo, function (object) {
 
 
   object.traverse(function (child) {

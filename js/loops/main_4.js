@@ -1,15 +1,23 @@
 
 
+
+//scene setup
+import * as THREE from '../../node_modules/three/src/Three.js';
+import  * as dat from '../../node_modules/dat.gui';
+import { OBJLoader } from '../../node_modules/three/examples/jsm/loaders/OBJLoader.js';
+import { GLTFLoader } from '../../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import { RenderPass } from '../../node_modules/three/examples/jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from '../../node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
+
+
+import dawn from "../../images/dawn.png";
+import flower from "../../models/flower.obj";
+
 var gui = new dat.GUI();
 let zz={xx:3};
   gui.add(zz, 'xx');
 
-//scene setup
-
-import * as THREE from './node_modules/three/src/Three.js';
-
-import { OBJLoader } from './node_modules/three/examples/jsm/loaders/OBJLoader.js';
-import { GLTFLoader } from './node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 
 var scene = new THREE.Scene();
 //scene.fog = new THREE.Fog(0x0000ff, 0,300);
@@ -73,7 +81,7 @@ var holder = new THREE.Group();
 const halos = 40;
 var gun;
 var material = new THREE.MeshStandardMaterial({
-  map: new THREE.TextureLoader().load("./././images/dawn.png"),
+  map: new THREE.TextureLoader().load(dawn),
   metalness: 0.39,
   roughness: 0.38,
 });
@@ -83,7 +91,7 @@ var material = new THREE.MeshStandardMaterial({
 gui.add(material, 'metalness', 0.0, 1.0);
 gui.add(material, 'roughness', 0.0, 1.0);
 var loader = new OBJLoader();
-loader.load('./././models/flower.obj', function (object) {
+loader.load(flower, function (object) {
 
 let ct = 0;
   object.traverse(function (child) {

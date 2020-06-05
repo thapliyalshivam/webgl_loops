@@ -1,7 +1,7 @@
 async function loadModule() {
 
   async function getscript() {
-    const num = window.location.hash.substr(1) || 6;
+    const num = window.location.hash.substr(1);
     const module = await
       import(`./js/loops/main_${num}.js`);
     // document.body.appendChild(module.canvas);

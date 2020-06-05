@@ -6,10 +6,10 @@ var container;
 container = document.createElement('div');
 document.body.appendChild(container);
 //scene setup
-import * as THREE from './node_modules/three/src/Three.js';
-import { OBJLoader } from './node_modules/three/examples/jsm/loaders/OBJLoader.js';
-import { GLTFLoader } from './node_modules/three/examples/jsm/loaders/GLTFLoader.js';
-import { ARButton } from './node_modules/three/examples/jsm/webxr/ARButton.js';
+import * as THREE from '../../node_modules/three/src/Three.js';
+import { OBJLoader } from '../../node_modules/three/examples/jsm/loaders/OBJLoader.js';
+import { GLTFLoader } from '../../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import { ARButton } from '../../node_modules/three/examples/jsm/webxr/ARButton.js';
 var container;
 var canvas;
 var camera, scene, renderer;
