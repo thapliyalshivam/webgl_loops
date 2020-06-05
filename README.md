@@ -7,7 +7,7 @@ There are also 3d animations used which are made using three.js.
 ______
 
 1. expanding shrinking Webgl 
-2. [BROKEN]Glowing dots post processing
+2. Glowing dots post processing
 3. gun and gold
 4. Flower power
 5. Bowl and cups
@@ -21,7 +21,8 @@ ______
 ## Task List
 ______
 
-- [ ] add colours list
+- [x ] add colours list
+- [x ] integrate webpack
 - [ ] add the next button and functionality
 - [ ] add the title and 
 
