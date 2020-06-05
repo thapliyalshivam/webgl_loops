@@ -12,13 +12,18 @@ var gui = new dat.GUI();
 // var THREE = require('three');
 console.log(THREE.REVISION);
 var scene = new THREE.Scene();
-//scene.fog = new THREE.Fog(0x0000ff, 0,300);
+scene.fog = new THREE.Fog(0x0000ff, 0,300);
+
+gui.add(scene.fog, 'near',0,100); 
+gui.add(scene.fog, 'far',0,100); 
+
 var camera = new THREE.PerspectiveCamera(15,
   window.innerWidth / window.innerHeight,
   0.1,
   2000);
   
 camera.position.z = 12;
+
 gui.add(camera.position, 'z'); 
 
 var renderer = new THREE.WebGLRenderer();
