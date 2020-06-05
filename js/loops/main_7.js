@@ -1,10 +1,10 @@
-import * as THREE from './node_modules/three/src/Three.js';
-import { OBJLoader } from './node_modules/three/examples/jsm/loaders/OBJLoader.js';
-import { GLTFLoader } from './node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import * as THREE from './../../node_modules/three/src/Three.js';
+import { OBJLoader } from './../../node_modules/three/examples/jsm/loaders/OBJLoader.js';
+import { GLTFLoader } from './../../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 import colours from "../lib/colours.js";
-import { UnrealBloomPass } from './node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js';
-import { EffectComposer } from './node_modules/three/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from './node_modules/three/examples/jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from './../../node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js';
+import { EffectComposer } from './../../node_modules/three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from './../../node_modules/three/examples/jsm/postprocessing/RenderPass.js';
 
 //Setting control GUI and data
 var gui = new dat.GUI();
