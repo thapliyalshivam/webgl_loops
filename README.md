@@ -21,8 +21,8 @@ ______
 ## Task List
 ______
 
-- [x ] add colours list
-- [x ] integrate webpack
+- [x] add colours list
+- [x] integrate webpack
 - [ ] add the next button and functionality
 - [ ] add the title and 
 
