@@ -7,7 +7,8 @@ acid_yellow:"#FCD51D",
 acid_blue:"#0029FF",
 acid_green:"#02BF66",
 acid_orange:"#FC5E21",
-acid_cyan:"#00ADEC"
+acid_cyan:"#00ADEC",
+matte_pink:"#b5aeb5"
 };
 
 
