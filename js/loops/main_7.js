@@ -3,6 +3,7 @@ import { OBJLoader } from '../../node_modules/three/examples/jsm/loaders/OBJLoad
 import { GLTFLoader } from '../../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 import colours from "../lib/colours.js";
 import { UnrealBloomPass } from '../../node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js';
+import { GlitchPass } from '../../node_modules/three/examples/jsm/postprocessing/GlitchPass.js';
 import { EffectComposer } from '../../node_modules/three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from '../../node_modules/three/examples/jsm/postprocessing/RenderPass.js';
 import  * as dat from '../../node_modules/dat.gui';
@@ -24,6 +25,7 @@ var controls = {
    
 //Scene Setup
 var scene = new THREE.Scene();
+
 var camera = new THREE.PerspectiveCamera(15,
   window.innerWidth / window.innerHeight,
   0.1,
@@ -45,9 +47,9 @@ document.body.appendChild( renderer.domElement );
     projection: 'normal',
     background: false,
     exposure: 1.4,
-    bloomStrength: 2.1,
-    bloomThreshold: 0,  
-    bloomRadius: 0.72
+    bloomStrength: 1.9,
+    bloomThreshold: 0.8,  
+    bloomRadius: 0.41
   };
   renderer.gammaInput = true;
   renderer.gammaOutput = true;
@@ -93,6 +95,7 @@ var bloomPass = new UnrealBloomPass( new THREE.Vector2( window.innerWidth, windo
 var composer = new EffectComposer( renderer );
 composer.addPass( renderScene );
 composer.addPass( bloomPass );
+composer.addPass( new GlitchPass(1111) );
 
 
 
@@ -138,7 +141,7 @@ var material = new THREE.MeshStandardMaterial({
   envMap: new THREE.TextureLoader().load(dawn),
   bumpMap:new THREE.TextureLoader().load(dotted),
   bumpScale:0.004,
-  metalness: 0.83,
+  metalness: 0.96,
   roughness: 0.34,
 });
 

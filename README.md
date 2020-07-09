@@ -3,7 +3,7 @@
 Animation loop is a plain vanilla animations made in 2d canvas, using basic amthematical functions and equations.
 There are also 3d animations used which are made using three.js.
 
-## No. Description
+## Sketches
 ______
 
 1. expanding shrinking Webgl 
@@ -16,6 +16,10 @@ ______
 99. [AR] google AR adaptation
 
 
+## Library files
+______
+
+colours: pink
 
 
 ## Task List
@@ -29,7 +33,11 @@ ______
 
 
 
-## Library files
-______
 
-colours: pink
+
+
+
+
+
+
+
