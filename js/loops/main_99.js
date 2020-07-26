@@ -12,13 +12,44 @@ import { GLTFLoader } from '../../node_modules/three/examples/jsm/loaders/GLTFLo
 import { ARButton } from '../../node_modules/three/examples/jsm/webxr/ARButton.js';
 var container;
 var canvas;
+
+import flower from '../../models/flower.obj';
+
+
+
 var camera, scene, renderer;
+
+
+
 var controller;
 
 init();
 animate();
 
 function init() {
+
+
+
+
+	var flowerBuffer; 
+
+var loader = new OBJLoader();
+loader.load(flower, function (object) {
+
+
+  object.traverse(function (child) {
+    if (child.isMesh) {
+	flowerBuffer = child.geometry;
+		// flowerBuffer = new THREE.BufferGeometry().fromGeometry( object.geometry );	
+	}
+	
+  });
+
+
+});
+
+
+
 
 	container = document.createElement('div');
 	document.body.appendChild(container);
@@ -51,7 +82,9 @@ function init() {
 	function onSelect() {
 
 		var material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random() });
-		var mesh = new THREE.Mesh(geometry, material);
+		var mesh = new THREE.Mesh(flowerBuffer, material);
+
+
 		mesh.position.set(0, 0, - 0.3).applyMatrix4(controller.matrixWorld);
 		mesh.quaternion.setFromRotationMatrix(controller.matrixWorld);
 		scene.add(mesh);

@@ -100,6 +100,7 @@ loader.load(yo, function (object) {
 
   object.traverse(function (child) {
     if (child.isMesh) {
+console.log(child);
       child.material = material;
     }
   });
