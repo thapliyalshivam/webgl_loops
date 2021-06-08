@@ -4,7 +4,6 @@ Animation loop is a plain vanilla animations made in 2d canvas, using basic amth
 There are also 3d animations used which are made using three.js.
 
 ## Sketches
-______
 
 1. expanding shrinking Webgl 
 2. Glowing dots post processing
@@ -16,14 +15,7 @@ ______
 99. [AR] google AR adaptation
 
 
-## Library files
-______
-
-colours: pink
-
-
 ## Task List
-______
 
 - [x] add colours list
 - [x] integrate webpack
